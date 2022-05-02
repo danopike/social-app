@@ -13,10 +13,10 @@
         android:textColor="@color/black"
         android:textSize="35sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/fragment_signup_fields_layout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/fragment_signup_fields_layout"
@@ -35,38 +35,77 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/fragment_signup_first_name_validation"
+            style="@style/ValidationTextView"
+            android:text="@string/first_name_validation"
+            app:layout_constraintStart_toStartOf="@id/fragment_signup_first_name_input"
+            app:layout_constraintTop_toBottomOf="@id/fragment_signup_first_name_input" />
+
         <EditText
             android:id="@+id/fragment_signup_last_name_input"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:hint="@string/last_name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fragment_signup_first_name_input" />
+
+        <TextView
+            android:id="@+id/fragment_signup_last_name_validation"
+            style="@style/ValidationTextView"
+            android:text="@string/last_name_validation"
+            app:layout_constraintStart_toStartOf="@id/fragment_signup_last_name_input"
+            app:layout_constraintTop_toBottomOf="@id/fragment_signup_last_name_input" />
 
         <EditText
             android:id="@+id/fragment_signup_email_input"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:hint="@string/email"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fragment_signup_last_name_input" />
+
+        <TextView
+            android:id="@+id/fragment_email_validation"
+            style="@style/ValidationTextView"
+            android:text="@string/email_validation"
+            app:layout_constraintStart_toStartOf="@id/fragment_signup_email_input"
+            app:layout_constraintTop_toBottomOf="@id/fragment_signup_email_input" />
+
 
         <EditText
             android:id="@+id/fragment_signup_password_input"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:hint="@string/password"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fragment_signup_email_input" />
+
+        <TextView
+            android:id="@+id/fragment_password_validation"
+            style="@style/ValidationTextView"
+            android:text="@string/password_validation"
+            app:layout_constraintStart_toStartOf="@id/fragment_signup_password_input"
+            app:layout_constraintTop_toBottomOf="@id/fragment_signup_password_input" />
 
         <EditText
             android:id="@+id/fragment_signup_confirm_password_input"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:hint="@string/confirm_password"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fragment_signup_password_input" />
 
+        <TextView
+            android:id="@+id/fragment_confirm_password_validation"
+            style="@style/ValidationTextView"
+            android:text="@string/confirm_password_validation"
+            app:layout_constraintStart_toStartOf="@id/fragment_signup_confirm_password_input"
+            app:layout_constraintTop_toBottomOf="@id/fragment_signup_confirm_password_input" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
