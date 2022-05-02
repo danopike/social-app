@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/FirstFragment"
         android:name="com.danpike.socialapp.SignInFragment"
-        android:label="@string/first_fragment_label"
+        android:label="@string/sign_in_fragment_label"
         tools:layout="@layout/fragment_sign_in">
 
         <action
@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/SecondFragment"
         android:name="com.danpike.socialapp.SignUpFragment"
-        android:label="@string/second_fragment_label"
+        android:label="@string/sign_up_fragment_label"
         tools:layout="@layout/fragment_sign_up">
 
         <action

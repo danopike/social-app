@@ -2,14 +2,22 @@
     <string name="app_name">Social App</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="sign_in_fragment_label">Welcome!</string>
+    <string name="sign_up_fragment_label">Sign up</string>
 
     <!-- Sign in fragment -->
     <string name="log_in">Log in</string>
     <string name="sign_up">Sign up</string>
 
     <!-- Sign up fragment -->
+    <string name="create_account">Create Account</string>
+    <string name="back">Back</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+
 
 
     <string name="hello_first_fragment">Hello first fragment</string>
