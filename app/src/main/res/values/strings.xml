@@ -2,16 +2,44 @@
     <string name="app_name">Social App</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="sign_in_fragment_label">Sign in</string>
+    <string name="sign_up_fragment_label">Sign up</string>
+    <string name="chat_fragment_label">Chat</string>
 
-    <!-- Sign in fragment -->
+    <!-- Sign In Fragment -->
+    <string name="welcome_message">Welcome to the \nSocial Network App</string>
     <string name="log_in">Log in</string>
     <string name="sign_up">Sign up</string>
+    <string name="enter_ip_address">Enter IP Address</string>
 
-    <!-- Sign up fragment -->
+    <!-- Sign Up Fragment -->
+    <string name="create_account">Create Account</string>
+    <string name="back">Back</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="first_name_validation">Please enter a first name</string>
+    <string name="last_name_validation">Please enter a last name</string>
+    <string name="email_validation">Please enter a valid email address</string>
+    <string name="password_validation">Must be at least 8 characters</string>
+    <string name="confirm_password_validation">Does not match</string>
+    <string name="failed_to_connect_to_server">Failed to connect to server</string>
+    <string name="error_email_already_registered">This email is already registered. Please enter a different email.</string>
+    <string name="account_created">Account Created Successfully</string>
+
+    <!-- Chat Fragment -->
+    <string name="chat_welcome_message">Welcome back, %s</string>
 
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <!-- Messages -->
+    <string name="success_message_title">Success</string>
+    <string name="error_message_title">Error</string>
+    <string name="error_message_negative">Ok</string>
+
+
+
+    <!-- Api endpoint info -->
+    <string name="signup_api_email_registered_error_message">This email is already registered</string>
 </resources>
