@@ -32,6 +32,7 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint="@string/first_name"
+            android:inputType="textPersonName"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,6 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:hint="@string/last_name"
+            android:inputType="textPersonName"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fragment_signup_first_name_input" />
 
@@ -64,6 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:hint="@string/email"
+            android:inputType="textEmailAddress"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fragment_signup_last_name_input" />
 
@@ -81,6 +84,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:hint="@string/password"
+            android:inputType="textPassword"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fragment_signup_email_input" />
 
@@ -97,6 +101,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:hint="@string/confirm_password"
+            android:inputType="textPassword"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fragment_signup_password_input" />
 
