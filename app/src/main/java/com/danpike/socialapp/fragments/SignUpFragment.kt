@@ -1,4 +1,4 @@
-package com.danpike.socialapp
+package com.danpike.socialapp.fragments
 
 import android.app.AlertDialog
 import android.content.Context
@@ -12,6 +12,10 @@ import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.danpike.socialapp.R
+import com.danpike.socialapp.api.ApiInterface
+import com.danpike.socialapp.api.responses.SignUpErrorResponse
+import com.danpike.socialapp.api.responses.User
 import com.danpike.socialapp.databinding.FragmentSignUpBinding
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken

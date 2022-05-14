@@ -1,4 +1,4 @@
-package com.danpike.socialapp
+package com.danpike.socialapp.fragments
 
 import android.content.Context
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.danpike.socialapp.R
 import com.danpike.socialapp.databinding.FragmentSignInBinding
 
 class SignInFragment : Fragment() {

@@ -1,6 +1,4 @@
-package com.danpike.socialapp
-
-import com.google.gson.annotations.SerializedName
+package com.danpike.socialapp.api.responses
 
 data class SignUpErrorResponse(
     var message: String? = null,

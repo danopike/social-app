@@ -1,4 +1,4 @@
-package com.danpike.socialapp
+package com.danpike.socialapp.api.responses
 
 data class User(
     var token: String? = null,

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/SignInFragment"
-        android:name="com.danpike.socialapp.SignInFragment"
+        android:name="com.danpike.socialapp.fragments.SignInFragment"
         android:label="@string/sign_in_fragment_label"
         tools:layout="@layout/fragment_sign_in">
 
@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/SignUpFragment"
-        android:name="com.danpike.socialapp.SignUpFragment"
+        android:name="com.danpike.socialapp.fragments.SignUpFragment"
         android:label="@string/sign_up_fragment_label"
         tools:layout="@layout/fragment_sign_up">
 
@@ -44,7 +44,7 @@
 
     <fragment
         android:id="@+id/ChatFragment"
-        android:name="com.danpike.socialapp.ChatFragment"
+        android:name="com.danpike.socialapp.fragments.ChatFragment"
         android:label="@string/chat_fragment_label"
         tools:layout="@layout/fragment_chat">
 

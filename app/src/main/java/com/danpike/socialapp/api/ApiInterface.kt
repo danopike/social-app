@@ -1,5 +1,6 @@
-package com.danpike.socialapp
+package com.danpike.socialapp.api
 
+import com.danpike.socialapp.api.responses.User
 import retrofit2.Call
 import retrofit2.http.*
 
