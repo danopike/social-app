@@ -13,4 +13,11 @@ interface ApiInterface {
         @Field("email") email: String?,
         @Field("password") password: String?
     ): Call<User>
+
+    @FormUrlEncoded
+    @POST("user/signin")
+    fun signIn(
+        @Field("email") email: String?,
+        @Field("password") password: String?
+    ): Call<User>
 }

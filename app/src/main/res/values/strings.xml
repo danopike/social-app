@@ -8,9 +8,10 @@
 
     <!-- Sign In Fragment -->
     <string name="welcome_message">Welcome to the \nSocial Network App</string>
-    <string name="log_in">Log in</string>
+    <string name="sign_in">Sign in</string>
     <string name="sign_up">Sign up</string>
     <string name="enter_ip_address">Enter IP Address</string>
+    <string name="signin_password_validation">Please enter a password</string>
 
     <!-- Sign Up Fragment -->
     <string name="create_account">Create Account</string>
@@ -23,7 +24,7 @@
     <string name="first_name_validation">Please enter a first name</string>
     <string name="last_name_validation">Please enter a last name</string>
     <string name="email_validation">Please enter a valid email address</string>
-    <string name="password_validation">Must be at least 8 characters</string>
+    <string name="signup_password_validation">Must be at least 5 characters</string>
     <string name="confirm_password_validation">Does not match</string>
     <string name="failed_to_connect_to_server">Failed to connect to server</string>
     <string name="error_email_already_registered">This email is already registered. Please enter a different email.</string>

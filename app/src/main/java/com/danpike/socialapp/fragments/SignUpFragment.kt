@@ -26,7 +26,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class SignUpFragment : Fragment() {
+class SignUpFragment : BaseFragment() {
 
     private var _binding: FragmentSignUpBinding? = null
 
@@ -67,40 +67,53 @@ class SignUpFragment : Fragment() {
 
         fun setErrorVisibility(text: TextView, error: Boolean) {
             if (error) {
-                invalidField = true
                 text.visibility = View.VISIBLE
             } else {
-                text.visibility = View.INVISIBLE
+                text.visibility = View.GONE
             }
+            invalidField = error
         }
 
-        passwordEditText.addTextChangedListener {
+        fun checkPassword() {
             setErrorVisibility(
                 passwordValidation,
-                passwordEditText.text.isBlank() || passwordEditText.text.length < 8
+                passwordEditText.text.isBlank() || passwordEditText.text.length < 5
             )
 
-            if (confirmPasswordEditText.text.isNotEmpty() || confirmPasswordValidation.isVisible) {
+            if (confirmPasswordEditText.text.isNotBlank() || confirmPasswordValidation.isVisible) {
                 setErrorVisibility(
                     confirmPasswordValidation,
-                    passwordEditText.text != confirmPasswordEditText.text
+                    passwordEditText.text.toString() != confirmPasswordEditText.text.toString()
                 )
             }
         }
 
-        confirmPasswordEditText.addTextChangedListener {
+        fun checkPasswordConfirm() {
             setErrorVisibility(
                 confirmPasswordValidation,
-                passwordEditText.text != confirmPasswordEditText.text
+                passwordEditText.text.toString() != confirmPasswordEditText.text.toString()
             )
+        }
+
+        passwordEditText.addTextChangedListener {
+            checkPassword()
+        }
+
+        confirmPasswordEditText.addTextChangedListener {
+            checkPasswordConfirm()
         }
 
         signUpButton.setOnClickListener {
             setErrorVisibility(firstNameValidation, firstNameEditText.text.isBlank())
             setErrorVisibility(lastNameValidation, lastNameEditText.text.isBlank())
             setErrorVisibility(emailValidation, !emailEditText.text.contains("@"))
+            checkPassword()
 
-            if (invalidField) {
+            if (passwordEditText.text.isNotBlank()) {
+                checkPasswordConfirm()
+            }
+
+            if (firstNameValidation.isVisible || lastNameValidation.isVisible || emailValidation.isVisible || passwordValidation.isVisible || confirmPasswordValidation.isVisible) {
                 return@setOnClickListener
             }
 
@@ -131,7 +144,10 @@ class SignUpFragment : Fragment() {
                     if (response.code() == 201) {
                         val user = response.body() ?: return
 
-                        showAlertDialog(getString(R.string.success_message_title), getString(R.string.account_created))
+                        showAlertDialog(
+                            getString(R.string.success_message_title),
+                            getString(R.string.account_created)
+                        )
 
                         with(sharedPref.edit()) {
                             putString("token", user.token)
@@ -163,14 +179,6 @@ class SignUpFragment : Fragment() {
                 }
             })
         }
-    }
-
-    fun showAlertDialog(title: String, message: String) {
-        AlertDialog.Builder(context)
-            .setTitle(title)
-            .setMessage(message)
-            .setPositiveButton(getString(R.string.error_message_negative), null)
-            .show()
     }
 
     override fun onDestroyView() {
