@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUpFragment">
+    tools:context=".fragments.SignUpFragment">
 
     <TextView
         android:layout_width="wrap_content"
@@ -47,7 +47,7 @@
             android:id="@+id/fragment_signup_last_name_input"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:hint="@string/last_name"
             android:inputType="textPersonName"
             app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +64,7 @@
             android:id="@+id/fragment_signup_email_input"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
             app:layout_constraintStart_toStartOf="parent"
@@ -82,7 +82,7 @@
             android:id="@+id/fragment_signup_password_input"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:hint="@string/password"
             android:inputType="textPassword"
             app:layout_constraintStart_toStartOf="parent"
@@ -91,7 +91,7 @@
         <TextView
             android:id="@+id/fragment_password_validation"
             style="@style/ValidationTextView"
-            android:text="@string/password_validation"
+            android:text="@string/signup_password_validation"
             app:layout_constraintStart_toStartOf="@id/fragment_signup_password_input"
             app:layout_constraintTop_toBottomOf="@id/fragment_signup_password_input" />
 
@@ -99,7 +99,7 @@
             android:id="@+id/fragment_signup_confirm_password_input"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:hint="@string/confirm_password"
             android:inputType="textPassword"
             app:layout_constraintStart_toStartOf="parent"

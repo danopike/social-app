@@ -1,4 +1,4 @@
-package com.danpike.socialapp
+package com.danpike.socialapp.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import com.danpike.socialapp.R
 import com.danpike.socialapp.databinding.FragmentChatBinding
 
 class ChatFragment : Fragment() {

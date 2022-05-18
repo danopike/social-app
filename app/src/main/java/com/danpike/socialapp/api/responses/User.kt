@@ -1,4 +1,4 @@
-package com.danpike.socialapp
+package com.danpike.socialapp.api.responses
 
 data class User(
     var token: String? = null,
@@ -6,5 +6,5 @@ data class User(
     var lastName: String? = null,
     var id: String? = null,
     var email: String? = null,
-    var friends: List<String>? = null
+    var friends: List<User>? = null
 )

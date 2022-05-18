@@ -4,46 +4,104 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignInFragment">
+    tools:context=".fragments.SignInFragment">
 
     <TextView
+        android:id="@+id/fragment_signin_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         android:text="@string/welcome_message"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@id/fragment_sign_in_log_in_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/fragment_sign_in_log_in_button"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_signin_field_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/log_in"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/fragment_signin_signup_message"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/fragment_signin_welcome">
 
-    <Button
-        android:id="@+id/fragment_sign_in_sign_up_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sign_up"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragment_sign_in_log_in_button" />
+        <EditText
+            android:id="@+id/fragment_signin_email_input"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/fragment_signin_email_validation"
+            style="@style/ValidationTextView"
+            android:text="@string/email_validation"
+            app:layout_constraintStart_toStartOf="@id/fragment_signin_email_input"
+            app:layout_constraintTop_toBottomOf="@id/fragment_signin_email_input" />
+
+        <EditText
+            android:id="@+id/fragment_signin_password_input"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_signin_email_input" />
+
+        <TextView
+            android:id="@+id/fragment_signin_password_validation"
+            style="@style/ValidationTextView"
+            android:text="@string/signin_password_validation"
+            app:layout_constraintStart_toStartOf="@id/fragment_signin_password_input"
+            app:layout_constraintTop_toBottomOf="@id/fragment_signin_password_input" />
+
+        <Button
+            android:id="@+id/fragment_sign_in_log_in_button"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/sign_in"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_signin_password_input" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <EditText
         android:id="@+id/fragment_signin_ip_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:hint="@string/enter_ip_address"
+        app:layout_constraintTop_toBottomOf="@id/fragment_signin_field_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/fragment_signin_signup_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="10dp"
+        android:text="Don't have an account yet?"
+        app:layout_constraintBottom_toTopOf="@id/fragment_sign_in_sign_up_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/fragment_sign_in_sign_up_button"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:text="@string/sign_up"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/fragment_sign_in_sign_up_button"
-        app:layout_constraintStart_toStartOf="@id/fragment_sign_in_sign_up_button"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_sign_in_sign_up_button" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
