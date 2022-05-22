@@ -31,9 +31,7 @@ class SignUpFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSignUpBinding.inflate(inflater, container, false)
-
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -106,7 +104,8 @@ class SignUpFragment : BaseFragment() {
 
             if (firstNameValidation.isVisible || lastNameValidation.isVisible
                 || emailValidation.isVisible || passwordValidation.isVisible
-                || confirmPasswordValidation.isVisible) {
+                || confirmPasswordValidation.isVisible
+            ) {
                 return@setOnClickListener
             }
 

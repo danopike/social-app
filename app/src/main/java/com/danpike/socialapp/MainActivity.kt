@@ -18,12 +18,13 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class MainActivity : AppCompatActivity(), SignInFragment.ISignInFragmentListener, SignUpFragment.ISignUpFragmentListener {
+class MainActivity : AppCompatActivity(), SignInFragment.ISignInFragmentListener,
+    SignUpFragment.ISignUpFragmentListener {
 
     private var endpoint = ""
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
-    private lateinit var service : ApiInterface
+    private lateinit var service: ApiInterface
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,20 +40,17 @@ class MainActivity : AppCompatActivity(), SignInFragment.ISignInFragmentListener
 
         binding.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+                .setAction("Action", null).show()
         }
 
         val sharedPref = getPreferences(Context.MODE_PRIVATE) ?: return
-
         val ip = sharedPref.getString("ip_address", "") ?: ""
         endpoint = "http://$ip:5000/api/"
         buildRetrofitService()
     }
 
     private fun buildRetrofitService() {
-
         val client = OkHttpClient.Builder().build()
-
         val retrofit = Retrofit.Builder()
             .baseUrl(endpoint)
             .addConverterFactory(GsonConverterFactory.create())

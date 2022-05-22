@@ -22,16 +22,14 @@ class SignInFragment : BaseFragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-    private lateinit var _listener : ISignInFragmentListener
+    private lateinit var _listener: ISignInFragmentListener
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
-    ): View? {
-
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         _binding = FragmentSignInBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -68,7 +66,8 @@ class SignInFragment : BaseFragment() {
         }
 
         binding.fragmentSignInSignUpButton.setOnClickListener {
-            val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return@setOnClickListener
+            val sharedPref =
+                activity?.getPreferences(Context.MODE_PRIVATE) ?: return@setOnClickListener
             with(sharedPref.edit()) {
                 putString("ip_address", ipEditText.text.toString())
                 apply()

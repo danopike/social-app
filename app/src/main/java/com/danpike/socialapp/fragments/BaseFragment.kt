@@ -23,6 +23,7 @@ abstract class BaseFragment : Fragment() {
             )
         }
     }
+
     fun showAlertDialog(title: String, message: String) {
         AlertDialog.Builder(context)
             .setTitle(title)
