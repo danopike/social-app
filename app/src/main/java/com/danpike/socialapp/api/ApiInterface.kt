@@ -1,6 +1,6 @@
 package com.danpike.socialapp.api
 
-import com.danpike.socialapp.api.responses.User
+import com.danpike.socialapp.api.responses.UserResponse
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -12,12 +12,12 @@ interface ApiInterface {
         @Field("lastName") lastName: String?,
         @Field("email") email: String?,
         @Field("password") password: String?
-    ): Call<User>
+    ): Call<UserResponse>
 
     @FormUrlEncoded
     @POST("user/signin")
     fun signIn(
         @Field("email") email: String?,
         @Field("password") password: String?
-    ): Call<User>
+    ): Call<UserResponse>
 }

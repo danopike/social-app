@@ -1,6 +1,5 @@
 package com.danpike.socialapp.fragments
 
-import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,21 +9,13 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.danpike.socialapp.R
-import com.danpike.socialapp.api.ApiInterface
-import com.danpike.socialapp.api.responses.SignUpErrorResponse
-import com.danpike.socialapp.api.responses.User
+import com.danpike.socialapp.api.responses.UserResponse
 import com.danpike.socialapp.databinding.FragmentSignUpBinding
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class SignUpFragment : BaseFragment() {
 
@@ -33,6 +24,7 @@ class SignUpFragment : BaseFragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private lateinit var _listener: ISignUpFragmentListener
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,6 +39,8 @@ class SignUpFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        _listener = context as ISignUpFragmentListener
+
         val firstNameEditText = binding.fragmentSignupFirstNameInput
         val firstNameValidation = binding.fragmentSignupFirstNameValidation
         val lastNameEditText = binding.fragmentSignupLastNameInput
@@ -58,8 +52,6 @@ class SignUpFragment : BaseFragment() {
         val confirmPasswordEditText = binding.fragmentSignupConfirmPasswordInput
         val confirmPasswordValidation = binding.fragmentConfirmPasswordValidation
         val signUpButton = binding.fragmentSignupSignUpButton
-        var invalidField = false
-
 
         binding.fragmentSignupBackButton.setOnClickListener {
             findNavController().navigate(R.id.action_SignUpFragment_to_SignInFragment)
@@ -71,7 +63,6 @@ class SignUpFragment : BaseFragment() {
             } else {
                 text.visibility = View.GONE
             }
-            invalidField = error
         }
 
         fun checkPassword() {
@@ -113,76 +104,64 @@ class SignUpFragment : BaseFragment() {
                 checkPasswordConfirm()
             }
 
-            if (firstNameValidation.isVisible || lastNameValidation.isVisible || emailValidation.isVisible || passwordValidation.isVisible || confirmPasswordValidation.isVisible) {
+            if (firstNameValidation.isVisible || lastNameValidation.isVisible
+                || emailValidation.isVisible || passwordValidation.isVisible
+                || confirmPasswordValidation.isVisible) {
                 return@setOnClickListener
             }
 
-            val sharedPref =
-                activity?.getPreferences(Context.MODE_PRIVATE) ?: return@setOnClickListener
-            val ip = sharedPref.getString("ip_address", "")
-            val endPoint = "http://$ip:5000/api/"
-
-            val client = OkHttpClient.Builder().build()
-
-            val retrofit = Retrofit.Builder()
-                .baseUrl(endPoint)
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(client)
-                .build()
-
-            val service = retrofit.create(ApiInterface::class.java)
-
-            val response = service.signUp(
+            _listener.onSignUp(
                 firstNameEditText.text.toString(),
                 lastNameEditText.text.toString(),
                 emailEditText.text.toString(),
                 passwordEditText.text.toString()
             )
+        }
+    }
 
-            response.enqueue(object : Callback<User> {
-                override fun onResponse(call: Call<User>, response: Response<User>) {
-                    if (response.code() == 201) {
-                        val user = response.body() ?: return
+    fun handleSignUpResponse(response: Call<UserResponse>) {
+        response.enqueue(object : Callback<UserResponse> {
+            override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
+                if (response.code() == 201) {
+                    val user = response.body() ?: return
 
-                        showAlertDialog(
-                            getString(R.string.success_message_title),
-                            getString(R.string.account_created)
-                        )
+                    showAlertDialog(
+                        getString(R.string.success_message_title),
+                        getString(R.string.account_created)
+                    )
 
+                    val sharedPref =
+                        activity?.getPreferences(Context.MODE_PRIVATE)
+
+                    if (sharedPref != null) {
                         with(sharedPref.edit()) {
                             putString("token", user.token)
                             apply()
                         }
-
-                        val action = SignUpFragmentDirections.actionSignUpFragmentToChatFragment(
-                            user.firstName ?: "",
-                            user.email ?: ""
-                        )
-                        findNavController().navigate(action)
-                    } else if (response.code() == 400) {
-                        val type = object : TypeToken<SignUpErrorResponse>() {}.type
-                        val signUpResponse: SignUpErrorResponse? =
-                            Gson().fromJson(response.errorBody()?.charStream(), type)
-                        val message = signUpResponse?.message
-
-                        if (message != null) {
-                            showAlertDialog(
-                                getString(R.string.error_message_title),
-                                message
-                            )
-                        }
                     }
-                }
 
-                override fun onFailure(call: Call<User>, t: Throwable) {
-                    Toast.makeText(context, t.localizedMessage, Toast.LENGTH_LONG).show()
+                    val action = SignUpFragmentDirections.actionSignUpFragmentToDashboardFragment(
+                        user.firstName ?: "",
+                        user.email ?: ""
+                    )
+                    findNavController().navigate(action)
+                } else if (response.code() == 400) {
+                    receivedErrorResponse(response)
                 }
-            })
-        }
+            }
+
+            override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+                Toast.makeText(context, t.localizedMessage, Toast.LENGTH_LONG).show()
+            }
+        })
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    interface ISignUpFragmentListener {
+        fun onSignUp(firstName: String, lastName: String, email: String, password: String)
     }
 }
