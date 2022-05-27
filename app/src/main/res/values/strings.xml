@@ -4,7 +4,7 @@
     <!-- Strings used for fragments for navigation -->
     <string name="sign_in_fragment_label">Sign in</string>
     <string name="sign_up_fragment_label">Sign up</string>
-    <string name="chat_fragment_label">Chat</string>
+    <string name="dashboard_fragment_label">Dashboard</string>
 
     <!-- Sign In Fragment -->
     <string name="welcome_message">Welcome to the \nSocial Network App</string>
@@ -30,7 +30,7 @@
     <string name="error_email_already_registered">This email is already registered. Please enter a different email.</string>
     <string name="account_created">Account Created Successfully</string>
 
-    <!-- Chat Fragment -->
+    <!-- Dashboard Fragment -->
     <string name="chat_welcome_message">Welcome back, %s</string>
 
 

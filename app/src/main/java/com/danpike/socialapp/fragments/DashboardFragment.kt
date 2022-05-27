@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.danpike.socialapp.R
-import com.danpike.socialapp.databinding.FragmentChatBinding
+import com.danpike.socialapp.databinding.FragmentDashboardBinding
 
-class ChatFragment : Fragment() {
-    private var _binding: FragmentChatBinding? = null
+class DashboardFragment : Fragment() {
+    private var _binding: FragmentDashboardBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -21,16 +21,16 @@ class ChatFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentChatBinding.inflate(inflater, container, false)
+        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         return binding.root
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val args: ChatFragmentArgs by navArgs()
+        val args: DashboardFragmentArgs by navArgs()
 
-        binding.fragmentChatWelcomeText.text = getString(
+        binding.fragmentDashboardWelcomeText.text = getString(
             R.string.chat_welcome_message,
             args.firstName
         )

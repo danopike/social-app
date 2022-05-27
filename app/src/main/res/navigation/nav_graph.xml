@@ -15,8 +15,8 @@
             android:id="@+id/action_SignInFragment_to_SignUpFragment"
             app:destination="@id/SignUpFragment" />
         <action
-            android:id="@+id/action_SignInFragment_to_ChatFragment"
-            app:destination="@id/ChatFragment" />
+            android:id="@+id/action_SignInFragment_to_DashboardFragment"
+            app:destination="@id/DashboardFragment" />
     </fragment>
 
     <fragment
@@ -38,15 +38,15 @@
             app:destination="@id/SignInFragment" />
 
         <action
-            android:id="@+id/action_SignUpFragment_to_ChatFragment"
-            app:destination="@id/ChatFragment" />
+            android:id="@+id/action_SignUpFragment_to_DashboardFragment"
+            app:destination="@id/DashboardFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/ChatFragment"
-        android:name="com.danpike.socialapp.fragments.ChatFragment"
-        android:label="@string/chat_fragment_label"
-        tools:layout="@layout/fragment_chat">
+        android:id="@+id/DashboardFragment"
+        android:name="com.danpike.socialapp.fragments.DashboardFragment"
+        android:label="@string/dashboard_fragment_label"
+        tools:layout="@layout/fragment_dashboard">
 
         <argument
             android:name="firstName"
@@ -57,7 +57,7 @@
             app:argType="string" />
 
         <action
-            android:id="@+id/action_ChatFragment_to_SignInFragment"
+            android:id="@+id/action_DashboardFragment_to_SignInFragment"
             app:destination="@id/SignInFragment" />
     </fragment>
 </navigation>
