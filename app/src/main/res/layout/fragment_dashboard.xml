@@ -15,4 +15,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/fragment_dashboard_add_friend_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/dashboard_add_friend_title"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@id/fragment_dashboard_friend_input"
+        app:layout_constraintTop_toBottomOf="@id/fragment_dashboard_welcome_text" />
+
+    <EditText
+        android:id="@+id/fragment_dashboard_friend_input"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/dashboard_add_friend_hint"
+        app:layout_constraintEnd_toStartOf="@id/fragment_dashboard_add_friend_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_dashboard_add_friend_title" />
+
+    <Button
+        android:id="@+id/fragment_dashboard_add_friend_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:text="@string/dashboard_add_friend"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/fragment_dashboard_friend_input" />
+
+    <TextView
+        android:id="@+id/fragment_dashboard_friend_validation"
+        style="@style/ValidationTextView"
+        android:text="@string/email_validation"
+        app:layout_constraintStart_toStartOf="@id/fragment_dashboard_friend_input"
+        app:layout_constraintTop_toBottomOf="@id/fragment_dashboard_friend_input" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

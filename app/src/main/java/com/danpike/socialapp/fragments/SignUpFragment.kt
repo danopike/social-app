@@ -84,6 +84,24 @@ class SignUpFragment : BaseFragment() {
             )
         }
 
+        firstNameEditText.addTextChangedListener {
+            if (firstNameValidation.isVisible) {
+                setErrorVisibility(firstNameValidation, firstNameEditText.text.isBlank())
+            }
+        }
+
+        lastNameEditText.addTextChangedListener {
+            if (lastNameValidation.isVisible) {
+                setErrorVisibility(lastNameValidation, lastNameEditText.text.isBlank())
+            }
+        }
+
+        emailEditText.addTextChangedListener {
+            if (emailValidation.isVisible) {
+                setErrorVisibility(emailValidation, !emailEditText.text.contains("@"))
+            }
+        }
+
         passwordEditText.addTextChangedListener {
             checkPassword()
         }
