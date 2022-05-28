@@ -20,4 +20,11 @@ interface ApiInterface {
         @Field("email") email: String?,
         @Field("password") password: String?
     ): Call<UserResponse>
+
+    @FormUrlEncoded
+    @PUT("user/addfriend")
+    fun addFriend(
+        @Header("authorization") authorization: String,
+        @Field("email") email: String
+    ): Call<UserResponse>
 }
