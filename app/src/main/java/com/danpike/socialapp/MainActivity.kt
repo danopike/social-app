@@ -11,6 +11,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.danpike.socialapp.api.ApiInterface
 import com.danpike.socialapp.databinding.ActivityMainBinding
+import com.danpike.socialapp.fragments.DashboardFragment
 import com.danpike.socialapp.fragments.SignInFragment
 import com.danpike.socialapp.fragments.SignUpFragment
 import com.google.android.material.snackbar.Snackbar
@@ -19,7 +20,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity(), SignInFragment.ISignInFragmentListener,
-    SignUpFragment.ISignUpFragmentListener {
+    SignUpFragment.ISignUpFragmentListener, DashboardFragment.IDashboardFragmentListener {
 
     private var endpoint = ""
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -106,6 +107,19 @@ class MainActivity : AppCompatActivity(), SignInFragment.ISignInFragmentListener
 
         if (fragment != null) {
             (fragment as SignUpFragment).handleSignUpResponse(response)
+        }
+    }
+
+    override fun onAddFriend(email: String) {
+        val sharedPref = getPreferences(Context.MODE_PRIVATE) ?: return
+        val token = "Bearer " + sharedPref.getString("token", "") ?: ""
+
+
+        val response = service.addFriend(token, email)
+        val fragment = supportFragmentManager.fragments[0]?.childFragmentManager?.fragments?.get(0)
+
+        if (fragment != null) {
+            (fragment as DashboardFragment).handleAddFriendResponse(response)
         }
     }
 }

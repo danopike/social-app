@@ -32,6 +32,10 @@
 
     <!-- Dashboard Fragment -->
     <string name="chat_welcome_message">Welcome back, %s</string>
+    <string name="dashboard_add_friend">Add</string>
+    <string name="dashboard_add_friend_hint">Email</string>
+    <string name="dashboard_add_friend_title">Add Friend:</string>
+    <string name="dashboard_friend_added">Friend added</string>
 
 
     <!-- Messages -->
